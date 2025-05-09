@@ -222,7 +222,7 @@ zabbix_export:
                       value: "{#PASSWORD.APPNAME}"
                 - uuid: 67ac460f6313489ab574837e3325f029
                   expression: "last(/Azure Service Principals by HTTP/azure.password.get[{#PASSWORD.ID},endDateTimeEpoch]) < now() + {$EXPIRY.CRIT} * 24 * 3600"
-                  name: "Secret of {#PASSWORD.APPNAME} expires soon (less than {$EXPIRY.WARN} days) - on {#PASSWORD.EXPIRY_DATE}"
+                  name: "Secret of {#PASSWORD.APPNAME} expires soon (less than {$EXPIRY.CRIT} days) - on {#PASSWORD.EXPIRY_DATE}"
                   priority: AVERAGE
                   dependencies:
                     - name: "Secret of {#PASSWORD.APPNAME} expired on {#PASSWORD.EXPIRY_DATE}"
@@ -235,7 +235,7 @@ zabbix_export:
                   name: "Secret of {#PASSWORD.APPNAME} expires soon (less than {$EXPIRY.WARN} days) - on {#PASSWORD.EXPIRY_DATE}"
                   priority: WARNING
                   dependencies:
-                    - name: "Secret of {#PASSWORD.APPNAME} expires soon (less than {$EXPIRY.WARN} days) - on {#PASSWORD.EXPIRY_DATE}"
+                    - name: "Secret of {#PASSWORD.APPNAME} expires soon (less than {$EXPIRY.CRIT} days) - on {#PASSWORD.EXPIRY_DATE}"
                       expression: "last(/Azure Service Principals by HTTP/azure.password.get[{#PASSWORD.ID},endDateTimeEpoch]) < now() + {$EXPIRY.CRIT} * 24 * 3600"
                   tags:
                     - tag: Application
