@@ -1,0 +1,1 @@
+# zabbix-templates-azure-by-http
